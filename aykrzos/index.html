@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AYKRZ OS · AI Business Operating System for Contractors</title>
+    <style>
+      :root {
+        --bg: #03040a;
+        --panel: #0b1020;
+        --accent: #c9a84c;
+        --muted: #cbd2e3;
+        --border: rgba(255, 255, 255, 0.1);
+        font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: #fff;
+        line-height: 1.7;
+      }
+
+      .page {
+        min-height: 100vh;
+        background: radial-gradient(circle at 10% 20%, rgba(201, 168, 76, 0.12), transparent 35%),
+          radial-gradient(circle at 80% 0%, rgba(12, 53, 87, 0.25), transparent 40%),
+          var(--bg);
+      }
+
+      .container {
+        width: min(1100px, 92%);
+        margin: 0 auto;
+        padding: 2rem 0 4rem;
+      }
+
+      header.hero {
+        padding: 4rem 1rem 3rem;
+        text-align: center;
+      }
+
+      .hero .eyebrow {
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        color: var(--muted);
+        margin-bottom: 1rem;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.7rem, 4vw, 3.8rem);
+        margin: 0;
+        line-height: 1.15;
+      }
+
+      .hero p {
+        margin: 1.5rem auto 0;
+        max-width: 600px;
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 1.15rem;
+      }
+
+      .hero .cta {
+        margin-top: 2rem;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .button {
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 999px;
+        padding: 0.9rem 1.6rem;
+        font-weight: 600;
+        color: #fff;
+        background: transparent;
+        cursor: pointer;
+        text-decoration: none;
+        transition: transform 0.2s ease, border-color 0.2s ease;
+      }
+
+      .button.primary {
+        background: var(--accent);
+        color: #03040a;
+        border-color: var(--accent);
+      }
+
+      .button:hover {
+        transform: translateY(-3px);
+        border-color: #fff;
+      }
+
+      section {
+        margin-top: 3rem;
+      }
+
+      h2 {
+        margin-bottom: 0.5rem;
+        font-size: 1.8rem;
+      }
+
+      .panel {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 1.5rem;
+        padding: 2rem;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
+      }
+
+      .split {
+        display: grid;
+        gap: 1.25rem;
+      }
+
+      .split.two {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      }
+
+      .checklist {
+        list-style: none;
+        padding: 0;
+        margin: 1rem 0 0;
+        display: grid;
+        gap: 0.9rem;
+      }
+
+      .checklist li {
+        padding-left: 2rem;
+        position: relative;
+        color: var(--muted);
+      }
+
+      .checklist li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+        font-size: 1rem;
+        top: 0;
+      }
+
+      .proof {
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.86);
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(201, 168, 76, 0.25);
+        border-radius: 1.25rem;
+        padding: 1.5rem;
+      }
+
+      .pricing-grid {
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+
+      .pricing-card {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--border);
+        padding: 1.75rem;
+        border-radius: 1.25rem;
+        position: relative;
+      }
+
+      .pricing-card h3 {
+        margin-top: 0.2rem;
+        margin-bottom: 0.1rem;
+        font-size: 1.75rem;
+      }
+
+      .pricing-card strong {
+        font-size: 1.1rem;
+        color: var(--muted);
+        display: block;
+        margin-top: 0.5rem;
+      }
+
+      .pricing-card .price {
+        font-size: 2.1rem;
+        margin: 0.5rem 0;
+        color: var(--accent);
+        font-weight: 700;
+      }
+
+      .pricing-card a {
+        margin-top: 1.25rem;
+        display: inline-flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .faq {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .faq article {
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 1rem;
+        padding: 1.25rem 1.4rem;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .faq h3 {
+        margin: 0;
+        font-size: 1rem;
+        color: #fff;
+      }
+
+      .faq p {
+        margin: 0.5rem 0 0;
+        color: var(--muted);
+      }
+
+      .contact {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .contact a {
+        color: var(--accent);
+      }
+
+      .os-banner {
+        background: linear-gradient(135deg, rgba(201, 168, 76, 0.1), rgba(14, 30, 52, 0.9));
+        border: 1px solid rgba(201, 168, 76, 0.3);
+        margin: -1rem auto 0;
+        padding: 1rem;
+        border-radius: 999px;
+        max-width: 960px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+      }
+
+      .os-banner a {
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      footer {
+        margin-top: 4rem;
+        padding: 2rem 1rem 3rem;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 600px) {
+        .hero {
+          padding-bottom: 2.5rem;
+        }
+
+        .panel {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <p class="eyebrow">AYKRZ OS</p>
+        <h1>Your Business. On Autopilot.</h1>
+        <p>AYKRZ OS configures a complete AI-powered business operation for your contracting company in 48 hours.</p>
+        <div class="cta">
+          <a class="button primary" href="mailto:tnelson@aykrzlandscaping.com">Talk to Terrance</a>
+          <a class="button" href="#pricing">View the tiers</a>
+        </div>
+      </header>
+
+      <div class="container">
+        <div class="os-banner">
+          Need the full AI business stack? <a href="https://aykrzos.com">See AYKRZ OS →</a>
+        </div>
+
+        <section>
+          <div class="panel">
+            <h2>The Problem</h2>
+            <p>
+              Most contractors lose $50,000+ per year chasing leads that never close, following up too late, and letting
+              warm prospects go cold while they juggle crews, invoices, and yesterday's calls.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="panel">
+            <h2>The Solution</h2>
+            <p>
+              AYKRZ OS is AI that researches your territory, finds decision makers, writes personalized outreach, follows
+              up automatically, and delivers weekly intelligence reports. It replaces the guesswork of chasing leads with a
+              repeatable pipeline, leaving you to do what you do best on site.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="panel">
+            <h2>What's Included</h2>
+            <ul class="checklist">
+              <li>Custom lead research engine for your trade and territory</li>
+              <li>Personalized outreach emails written and sent automatically</li>
+              <li>Follow-up sequences that run without you</li>
+              <li>Weekly pipeline and revenue reports</li>
+              <li>Competitor intelligence for your market</li>
+              <li>Proposal generation from property data</li>
+              <li>30 days of dedicated support</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <div class="panel proof">
+            <h2>Proof</h2>
+            <p>
+              “We built this for AYKRZ Landscaping. First week: 22 leads found, 9 outreach emails sent, 3 warm replies from
+              property managers. Now we're configuring it for other contractors.”
+            </p>
+          </div>
+        </section>
+
+        <section id="pricing">
+          <div class="panel">
+            <h2>Pricing</h2>
+            <div class="pricing-grid">
+              <article class="pricing-card">
+                <span>OS Starter</span>
+                <p class="price">$997</p>
+                <strong>One-time</strong>
+                <p>Full AI config for your trade and territory. Up and running in 48 hours.</p>
+                <a class="button primary" href="https://buy.stripe.com/28E00c2lv6oRbTMaMf1kA04">Get Started</a>
+              </article>
+              <article class="pricing-card">
+                <span>OS Pro</span>
+                <p class="price">$1,997</p>
+                <strong>One-time</strong>
+                <p>Everything in Starter plus 60 days support, competitor intelligence, and proposal automation.</p>
+                <a class="button primary" href="https://buy.stripe.com/6oUdR2e4d5kN8HA1bF1kA05">Get Started</a>
+              </article>
+              <article class="pricing-card">
+                <span>OS Elite</span>
+                <p class="price">$3,500</p>
+                <strong>One-time</strong>
+                <p>White-glove setup, custom outreach sequences, weekly strategy calls for 90 days.</p>
+                <a class="button primary" href="https://buy.stripe.com/5kQ28k8JT28B5vo1bF1kA06">Get Started</a>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div class="panel">
+            <h2>FAQ</h2>
+            <div class="faq">
+              <article>
+                <h3>What trades does this work for?</h3>
+                <p>Landscaping crews, property maintenance, painting, roofing, and any contractor who sells recurring campus-level work.</p>
+              </article>
+              <article>
+                <h3>How long does setup take?</h3>
+                <p>Forty-eight hours. We turn around the territory research, outreach engine, and reporting dashboards in two days.</p>
+              </article>
+              <article>
+                <h3>Do I need technical knowledge?</h3>
+                <p>No. We configure AI agents, send outreach, and package the intelligence so you only approve the decisions that matter.</p>
+              </article>
+              <article>
+                <h3>What if I don't get results?</h3>
+                <p>We build the pipeline with your territory and follow up automatically. If a campaign stalls, we pivot messaging and target immediately.</p>
+              </article>
+              <article>
+                <h3>How is this different from Thumbtack or Angi?</h3>
+                <p>Those are shared lead marketplaces. AYKRZ OS delivers exclusive territory research, custom outreach, and automation tied to your brand.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div class="panel contact">
+            <h2>Contact</h2>
+            <p>tnelson@aykrzlandscaping.com • 909-747-9205</p>
+            <p>AYKRZ OS is served alongside our AYKRZ Landscaping operations out of the Inland Empire.</p>
+          </div>
+        </section>
+      </div>
+
+      <footer>
+        AYKRZ Inc. — Premium AI business automation for Inland Empire contractors.
+      </footer>
+    </div>
+  </body>
+</html>
